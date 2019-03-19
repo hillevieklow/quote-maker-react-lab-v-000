@@ -1,32 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import QuoteCard from '../components/QuoteCard';
 
-class Quotes extends Component {
-
-  render() {
-    return (
-      <div>
-        <hr />
-        <div className="row justify-content-center">
-          <h2>Quotes</h2>
-        </div>
-        <hr />
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4">
-              {/*
-                TODO:
-
-                Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
-               */}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+export const addQuote = quote => {
+    return {
+      type: 'ADD_QUOTE',
+      quote: Object.assign({}, quote, { votes: 0 })
+    }
   }
-}
 
-//add arguments to connect as needed
-export default connect()(Quotes);
+  export const removeQuote = quoteId => {
+    return {
+      type: 'REMOVE_QUOTE',
+      quoteId
+    }
+  }
+
+  export const upvoteQuote = quoteId => {
+    return {
+      type: 'UPVOTE_QUOTE',
+      quoteId
+    }
+  }
+
+  export const downvoteQuote = quoteId => {
+    return {
+      type: 'DOWNVOTE_QUOTE',
+      quoteId
+    }
+  }
